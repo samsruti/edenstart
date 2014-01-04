@@ -1371,9 +1371,11 @@ def module_dialog(app):
         template_path = os.path.join(base_path, "private", "templates", session.template)
         sys.path.append(template_path)
         try:
-            # import the template config file (if one exists)
             import config
-        finally:
+        except:
+            # @ToDo: Deal with the exception or print a message
+            pass
+        else:
             return config.settings.modules.keys()
     templatelist = get_template_modules()
     module = DIV(_id="module-form",
